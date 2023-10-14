@@ -137,7 +137,7 @@ def send_news(chat_id, num_messages):
                 if title not in sent_news:
                     bot.send_message(chat_id, f'{title}\n{url}')
                     sent_news.add(title)
-                    sent_messages += 1a
+                    sent_messages += 1
                     writing_to_a_file(title)
         if sent_messages == 0:
             bot.send_message(chat_id, 'Нет доступных новостей. Попробуйте позже')
@@ -146,11 +146,11 @@ def send_news(chat_id, num_messages):
 def writing_to_a_file(mesg):
     with open('urlbase.log', 'a', encoding='utf-8') as file:
         file.write(f'--- {mesg}\n')
-    with open('urlbase.log', 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-        if len(lines) > 10:
-            with open('urlbase.log', 'w', encoding='utf-8') as f:
-                f.writelines(lines[:-1])
+        with open('urlbase.log', 'r', encoding='utf-8') as fi:
+            lines = fi.readlines()
+            if len(lines) > 10:
+                with open('urlbase.log', 'w', encoding='utf-8') as f:
+                    f.writelines(lines[1:])
 
 
 def schedule_news():
