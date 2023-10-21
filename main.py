@@ -119,7 +119,7 @@ def send_custom_news(message):
 def subscribe(message):
     """Функция подписки"""
     bot.send_message(message.chat.id, 'Хорошо! Теперь я буду отправлять вам по 3 новости каждый день в 14:00')
-    schedule_news()
+    schedule_news(message.chat.id)
 
 
 def send_news(chat_id, num_messages):
@@ -153,12 +153,12 @@ def writing_to_a_file(mesg):
                     f.writelines(lines[1:])
 
 
-def schedule_news():
+def schedule_news(chat_id):
     desired_time = "14:00"
     current_time = time.strftime("%H:%M")
     if current_time == desired_time:
         num_messages = 3
-        send_news(num_messages)
+        send_news(chat_id, num_messages)
 
 
 schedule.every().day.at("14:00").do(schedule_news)
