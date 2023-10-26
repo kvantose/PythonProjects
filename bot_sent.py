@@ -1,6 +1,4 @@
 from loader import bot
-import schedule
-import time
 import requests
 from config_data import config
 from database import add_history
@@ -27,14 +25,3 @@ def send_news(chat_id, num_messages):
                     add_history.writing_to_a_file(title)
         if sent_messages == 0:
             bot.send_message(chat_id, 'Нет доступных новостей. Попробуйте позже')
-
-
-def schedule_news(chat_id):
-    desired_time = "14:00"
-    current_time = time.strftime("%H:%M")
-    if current_time == desired_time:
-        num_messages = 3
-        send_news(chat_id, num_messages)
-
-
-schedule.every().day.at("14:00").do(schedule_news)

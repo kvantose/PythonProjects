@@ -8,12 +8,11 @@ def welcome(message):
     bot.send_message(message.chat.id,
                      'Привет. Я новостной бот BBC. Я могу отправлять вам самые последние новости мира.')
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    three_news = types.KeyboardButton('3')
-    five_news = types.KeyboardButton('5')
+    three_news = types.KeyboardButton('3 новости')
+    five_news = types.KeyboardButton('5 новостей')
     custom = types.KeyboardButton('Введите кол-во новостей')
-    sub = types.KeyboardButton('Подписаться на рассылку новостей')
-    markup.add(three_news, five_news, custom, sub)
+    currency = types.KeyboardButton('Курс валют')
+    markup.add(three_news, five_news, custom, currency)
 
     bot.send_message(message.chat.id, 'Выберите количество новостей, которые вы хотели бы увидеть.'
-                                      'Так же вы можете подписаться на ежедневную рассылку новостей нажав на кнопку'
-                                      '"Подписаться на рассылку"', reply_markup=markup)
+                                      , reply_markup=markup)
