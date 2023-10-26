@@ -9,6 +9,9 @@ else:
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_KEY = os.getenv("API_KEY")
 BASE_URL = os.getenv('BASE_URL')
+CURRENCY_KEY = os.getenv("CURRENCY_KEY")
+DOLLAR_URL = os.getenv('DOLLAR_URL')
+EURO_URL = os.getenv('EURO_URL')
 DEFAULT_COMMANDS = (
     ("start", "Запустить бота"),
     ("help", "Вывести справку"),
